@@ -1,0 +1,11 @@
+<svg width="1000" height="500"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">       
+  <path d="M 25 250
+    Q 250 -200, 500 250
+    T 975 250"
+    stroke="red"
+    stroke-width="50px"
+    fill="none"
+    stroke-linecap="round"
+    stroke-linejoin="round"/>
+</svg>

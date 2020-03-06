@@ -1,0 +1,28 @@
+<svg width="750" height="500"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"> 
+  <path
+    d="
+    M 288 175
+    A 225 225 0 1 1 288 325
+    "
+    stroke="black"
+    stroke-width="50px"
+    fill="none"
+    />
+    <line
+        x1="100px"
+        y1="250px"
+        x2="500px"
+        y2="250px"
+        stroke="black"
+        stroke-width="50px"
+        marker-end="url(#arrowhead)"
+    />
+    <polygon
+        points="
+        435 150
+        435 350
+        610 250
+        "
+    />
+</svg>

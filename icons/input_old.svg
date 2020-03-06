@@ -1,0 +1,56 @@
+<svg width="750" height="500"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"> 
+  <defs>
+    <marker
+        id="arrowhead"
+        orient="auto"
+        markerWidth="4"
+        markerHeight="4"
+        refX="1"
+        refY="2">
+        <path
+            d="M 0 0
+            V 4
+            L 3 2
+            Z"
+            fill="black"
+        />
+    </marker>
+  </defs>
+  <mask id="mymask">
+        <rect
+            x="0px"
+            y="0px"
+            width="750px"
+            height="500px"
+            fill="white"
+        />
+        <rect
+            x="200px"
+            y="200px"
+            width="150px"
+            height="100px"
+            fill="black"
+        />
+    </mask>
+  <circle
+    cx="500px"
+    cy="250px"
+    r="225px"
+    stroke="black"
+    stroke-width="50px"
+    fill="none"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+    mask="url(#mymask)"
+    />
+    <line
+        x1="100px"
+        y1="250px"
+        x2="500px"
+        y2="250px"
+        stroke="black"
+        stroke-width="50px"
+        marker-end="url(#arrowhead)"
+    />
+</svg>

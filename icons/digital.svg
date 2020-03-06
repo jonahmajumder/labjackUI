@@ -1,0 +1,16 @@
+<svg width="1000" height="500"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">       
+  <path d="
+    M 25 475,
+    v -450,
+    h 475,
+    v 450,
+    h 475,
+    v -450,
+    " 
+    stroke="blue"
+    stroke-width="50px"
+    fill="none"
+    stroke-linecap="round"
+    stroke-linejoin="round"/>
+</svg>

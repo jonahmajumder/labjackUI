@@ -15,7 +15,7 @@ class QSwitch(QCheckBox):
 
         self.vertical = False
 
-        self.marginPx = 5
+        self.marginPx = 0
 
         self.frac = float(self.isChecked())
         self.timer = QtCore.QTimer()

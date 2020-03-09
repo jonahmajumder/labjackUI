@@ -14,7 +14,7 @@ class LabjackIO(Base, Form):
         'analogGroupBox', 'analogLabel', 'analogReadout',
         'directionGroupBox', 'inputButton', 'outputButton', 'directionStack',
         'inputGroupBox', 'inputLabelWidget', 'inputHighLabel', 'inputLowLabel', 'led',
-        'outputSwitch']
+        'outputGroupBox', 'outputLabelWidget', 'outputHighLabel', 'outputLowLabel', 'outputSwitch']
     ONSS = 'color: rgb(0, 0, 0);'
     OFFSS = 'color: rgba(0, 0, 0, 63);'
 
@@ -64,8 +64,10 @@ class LabjackIO(Base, Form):
         p = QtGui.QPixmap(imagefile)
         ic = QtGui.QIcon(p)
         button.setIcon(ic)
-        button.setIconSize(QtCore.QSize(*size))
-        button.setFixedSize(QtCore.QSize(*size).grownBy(margins))
+        size = [int(s) for s in size]
+        iconSize = QtCore.QSize(*size)
+        button.setIconSize(iconSize)
+        button.setFixedSize(iconSize.grownBy(margins))
 
     def groupButtons(self, buttons, tag):
         if not hasattr(self, 'buttonGroups'):
@@ -94,13 +96,13 @@ class LabjackIO(Base, Form):
 
     def doTypeChanged(self):
         i = self.buttonGroups['type'].checkedId()
-        self.typeStack.setCurrentIndex(i)
-        self.typeChanged.emit(i == 0)
+        self.typeStack.setCurrentIndex(1-i)
+        self.typeChanged.emit(i == 1)
 
     def doDirectionChanged(self):
         i = self.buttonGroups['direction'].checkedId()
-        self.directionStack.setCurrentIndex(i)
-        self.directionChanged.emit(i == 0)
+        self.directionStack.setCurrentIndex(1-i)
+        self.directionChanged.emit(i == 1)
 
     def doOutputStateChanged(self):
         newState = self.outputSwitch.isChecked()
@@ -119,7 +121,6 @@ class LabjackIO(Base, Form):
     @QtCore.pyqtSlot(float)
     def analogInputChanged(self, newValue):
         self.analogReadout.display(newValue)
-
 
 if __name__ == '__main__':
     app = QtWidgets.QApplication([])

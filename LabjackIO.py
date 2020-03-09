@@ -89,6 +89,9 @@ class LabjackIO(Base, Form):
             button.clicked.connect(self.doDirectionChanged)
         self.doDirectionChanged()
 
+        self.outputSwitch.stateChanged.connect(self.doOutputStateChanged)
+        self.doOutputStateChanged()
+
     def doTypeChanged(self):
         i = self.buttonGroups['type'].checkedId()
         self.typeStack.setCurrentIndex(i)
@@ -98,6 +101,10 @@ class LabjackIO(Base, Form):
         i = self.buttonGroups['direction'].checkedId()
         self.directionStack.setCurrentIndex(i)
         self.directionChanged.emit(i == 0)
+
+    def doOutputStateChanged(self):
+        newState = self.outputSwitch.isChecked()
+        self.directionChanged.emit(newState)
 
     @QtCore.pyqtSlot(bool)
     def inputStateChanged(self, newState):

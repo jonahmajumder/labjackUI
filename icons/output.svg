@@ -1,28 +1,43 @@
 <svg width="750" height="500"
   xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"> 
+  <!-- <rect
+    fill="gray"
+    x="0"
+    y="0"
+    width="1000"
+    height="650"
+  />
+  <circle
+    cx="250"
+    cy="250"
+    r="225"
+    fill="none"
+    stroke="blue"
+    stroke-width="50px"
+  /> -->
   <path
     d="
-    M 462 175
-    A 225 225 0 1 0 462 325
+    M 460.3 170
+    A 225 225 0 1 0 460.3 330
     "
     stroke="black"
     stroke-width="50px"
     fill="none"
-    />
-    <line
-        x1="250px"
-        y1="250px"
-        x2="600px"
-        y2="250px"
-        stroke="black"
-        stroke-width="50px"
-        marker-end="url(#arrowhead)"
-    />
-    <polygon
-        points="
-        575 150
-        575 350
-        750 250
-        "
-    />
+  />
+  <line
+    x1="225px"
+    y1="250px"
+    x2="625px"
+    y2="250px"
+    stroke="black"
+    stroke-width="50px"
+    marker-end="url(#arrowhead)"
+  />
+  <polygon
+    points="
+    558.4 150
+    558.4 350
+    734.6 250
+    "
+  />
 </svg>

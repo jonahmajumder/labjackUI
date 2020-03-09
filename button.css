@@ -1,0 +1,10 @@
+/*pushbutton stylesheet*/
+
+QPushButton {
+    /*border-radius: 4px;*/
+    border: 0px;
+}
+
+QPushButton:checked {
+    background-color: rgb(150,150,150);
+}

@@ -8,14 +8,14 @@ from PyQt5.QtWidgets import QCheckBox
 class QSwitch(QCheckBox):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        self.setSizePolicy(QtWidgets.QSizePolicy.Ignored, QtWidgets.QSizePolicy.Ignored)
-        self.setMinimumSize(QtCore.QSize(30, 30))
+        # self.setSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Preferred)
+        # self.setMinimumSize(QtCore.QSize(30, 30))
         
         self.clicked.connect(self.click)
 
-        self.vertical = False
+        self.vertical = True
 
-        self.marginPx = 0
+        self.marginPx = 2
 
         self.frac = float(self.isChecked())
         self.timer = QtCore.QTimer()
@@ -127,7 +127,7 @@ class QSwitch(QCheckBox):
         # painter.drawRoundedRect(rect, radius, radius)
 
         fnt = painter.font()
-        fnt.setPointSize(int(self.outerRadius()*.7))
+        fnt.setPointSize(int(self.outerRadius()))
         fnt.setBold(True)
         painter.setFont(fnt)
         painter.setPen(textColor)

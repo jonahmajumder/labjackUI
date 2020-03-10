@@ -30,9 +30,23 @@ class LabjackApp(QtWidgets.QMainWindow):
         return
 
     def addIOs(self):
+
         for col in range(4):
             for row in range(8):
-                self.ui.grid.addWidget(LabjackIO(), row, col)
+                f = QtWidgets.QFrame()
+                f.setFrameShape(QtWidgets.QFrame.Panel)
+                f.setFrameShadow(QtWidgets.QFrame.Raised)
+                hl = QtWidgets.QHBoxLayout()
+                hl.setContentsMargins(0, 0, 0, 0)
+                hl.setSpacing(0)
+                l = QtWidgets.QLabel('NAME')
+                l.setAlignment(QtCore.Qt.AlignCenter)
+                hl.addWidget(l)
+                hl.addWidget(LabjackIO())
+                f.setLayout(hl)
+                self.ui.grid.addWidget(f, row, col)
+
+        self.ui.grid.setContentsMargins(0, 0, 0, 0)
 
 
 app = QtWidgets.QApplication(sys.argv)

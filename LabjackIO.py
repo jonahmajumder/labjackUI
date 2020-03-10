@@ -41,6 +41,14 @@ class LabjackIO(Base, Form):
         # m = self.typeStack.contentsMargins()
         # print(m.left(), m.top(), m.right(), m.bottom())
 
+    def reportSizes(self):
+        for name in ['inputLabelWidget', 'inputHighLabel', 'inputLowLabel', 'led',
+        'outputLabelWidget', 'outputHighLabel', 'outputLowLabel', 'outputSwitch']:
+            print(name)
+            obj = getattr(self, name)
+            print(' '*4 + type(obj).__name__)
+            print(' '*4 + str(obj.geometry()))
+
     def gatherChildren(self):
         for name in self.childNames:
             child = self.findChild(QtCore.QObject, name)
@@ -50,8 +58,8 @@ class LabjackIO(Base, Form):
                 print("Child '{}' not found!".format(name))
 
     def addIcons(self):
-        typeIconHgt = 20
-        dirIconHgt = 16
+        typeIconHgt = 16
+        dirIconHgt = 12
 
         self.setButtonIcon(self.analogButton, 'icons/analog.svg', (2*typeIconHgt, typeIconHgt))
         self.setButtonIcon(self.digitalButton, 'icons/digital.svg', (2*typeIconHgt, typeIconHgt))

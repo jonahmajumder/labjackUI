@@ -6,7 +6,7 @@ from PyQt5 import QtWidgets
 from PyQt5.QtWidgets import QWidget
 
 class QLED(QWidget):
-    FILLFRAC = 0.9
+    FILLFRAC = 0.8
 
     def __init__(self, *args, **kwargs):
         args = list(args)
@@ -22,9 +22,9 @@ class QLED(QWidget):
             self.colorIdx = colors.index(rgbcolor)
         except ValueError:
             self.colorIdx = 1
-            print('Color defaulting to green.')
+            # print('Color defaulting to green.')
 
-        self.setMinimumSize(QtCore.QSize(50, 50))
+        # self.setMinimumSize(QtCore.QSize(50, 50))
 
     def dim(self):
         return min(self.geometry().width(), self.geometry().height())

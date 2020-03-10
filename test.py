@@ -14,7 +14,7 @@ window = QMainWindow()
 # w = QWidget()
 # vb = QVBoxLayout()
 
-l1 = LabjackIO()
+l = LabjackIO()
 # l2 = LabjackIO()
 # vb.addWidget(l1)
 # vb.addWidget(l2)
@@ -22,7 +22,7 @@ s = QSwitch()
 # vb.addWidget(s)
 
 # w.setLayout(vb)
-window.setCentralWidget(l1)
+window.setCentralWidget(l)
 
 
 window.show()

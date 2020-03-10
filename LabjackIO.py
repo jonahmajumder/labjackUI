@@ -107,6 +107,12 @@ class LabjackIO(Base, Form):
     def doOutputStateChanged(self):
         newState = self.outputSwitch.isChecked()
         self.directionChanged.emit(newState)
+        if newState:
+            self.outputHighLabel.setStyleSheet(self.ONSS)
+            self.outputLowLabel.setStyleSheet(self.OFFSS)
+        else:
+            self.outputHighLabel.setStyleSheet(self.OFFSS)
+            self.outputLowLabel.setStyleSheet(self.ONSS)
 
     @QtCore.pyqtSlot(bool)
     def inputStateChanged(self, newState):

@@ -9,8 +9,8 @@ class QSwitch(QCheckBox):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.setSizePolicy(QtWidgets.QSizePolicy.Ignored, QtWidgets.QSizePolicy.Ignored)
-        self.setMinimumSize(30, 30)
-
+        self.setMinimumSize(QtCore.QSize(30, 30))
+        
         self.clicked.connect(self.click)
 
         self.vertical = False
@@ -28,8 +28,12 @@ class QSwitch(QCheckBox):
     def margins(self):
         return self.uniformMargins(self.marginPx)
 
+    def centerPoint(self):
+        return QtCore.QPoint(round(self.geometry().width()/2), round(self.geometry().height()/2))
+
     def contentRect(self):
         rect = self.geometry().marginsRemoved(self.margins())
+        rect.moveCenter(self.centerPoint())
         return rect
 
     @staticmethod
@@ -56,7 +60,7 @@ class QSwitch(QCheckBox):
 
     def outerRect(self):
         rect = QtCore.QRect(0, 0, *self.dims())
-        rect.moveCenter(self.contentRect().center())
+        rect.moveCenter(self.centerPoint())
         return rect
 
     def cocenters(self):
@@ -128,6 +132,8 @@ class QSwitch(QCheckBox):
         painter.setFont(fnt)
         painter.setPen(textColor)
         painter.drawText(self.textRect(), Qt.AlignCenter, text)
+
+        painter.end()
 
     def click(self):
         self.setupTimer()

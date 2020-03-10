@@ -389,10 +389,10 @@
                    </layout>
                   </widget>
                  </item>
-                 <item alignment="Qt::AlignTop">
+                 <item alignment="Qt::AlignVCenter">
                   <widget class="QSwitch" name="outputSwitch">
                    <property name="sizePolicy">
-                    <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                    <sizepolicy hsizetype="Ignored" vsizetype="Ignored">
                      <horstretch>0</horstretch>
                      <verstretch>0</verstretch>
                     </sizepolicy>

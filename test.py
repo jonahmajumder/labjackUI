@@ -2,7 +2,7 @@ from PyQt5.QtWidgets import *
 from PyQt5.QtCore import QTimer
 from PyQt5 import uic
 
-from LabjackIO import LabjackIO
+from ConnectPanel import ConnectPanel
 
 from qswitch import QSwitch
 
@@ -14,15 +14,15 @@ window = QMainWindow()
 # w = QWidget()
 # vb = QVBoxLayout()
 
-l = LabjackIO()
+p = ConnectPanel()
 # l2 = LabjackIO()
 # vb.addWidget(l1)
 # vb.addWidget(l2)
-s = QSwitch()
+# s = QSwitch()
 # vb.addWidget(s)
 
 # w.setLayout(vb)
-window.setCentralWidget(l)
+window.setCentralWidget(p)
 
 
 window.show()

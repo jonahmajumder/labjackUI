@@ -37,16 +37,18 @@ class LabjackApp(QtWidgets.QMainWindow):
                 f.setFrameShape(QtWidgets.QFrame.Panel)
                 f.setFrameShadow(QtWidgets.QFrame.Raised)
                 hl = QtWidgets.QHBoxLayout()
-                hl.setContentsMargins(0, 0, 0, 0)
+                hl.setContentsMargins(5, 0, 0, 0)
                 hl.setSpacing(0)
                 l = QtWidgets.QLabel('NAME')
                 l.setAlignment(QtCore.Qt.AlignCenter)
                 hl.addWidget(l)
-                hl.addWidget(LabjackIO())
+                if col == 0 and row < 4:
+                    hl.addWidget(LabjackIO(analogOnly=True))
+                else:
+                    hl.addWidget(LabjackIO())
                 f.setLayout(hl)
                 self.ui.grid.addWidget(f, row, col)
 
-        self.ui.grid.setContentsMargins(0, 0, 0, 0)
 
 
 app = QtWidgets.QApplication(sys.argv)

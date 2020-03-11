@@ -22,8 +22,10 @@ class LabjackIO(Base, Form):
     directionChanged = QtCore.pyqtSignal(bool)
     outputStateChanged = QtCore.pyqtSignal(bool)
 
-    def __init__(self, parent=None):
-        super().__init__(parent)
+    def __init__(self, *args, **kwargs):
+        self.exclusiveType = kwargs.pop('exclusiveType', None)
+
+        super().__init__(*args, **kwargs)
         # self.groupButtons()
 
         self.setupUi(self)
@@ -37,6 +39,13 @@ class LabjackIO(Base, Form):
         self.connectButtons()
 
         self.setStyleSheet(open('button.css').read())
+
+        if self.exclusiveType == 'analog':
+            self.analogButton.click()
+            self.digitalButton.setEnabled(False)
+        elif self.exclusiveType == 'digital':
+            self.digitalButton.click()
+            self.analogButton.setEnabled(False)
 
         # m = self.typeStack.contentsMargins()
         # print(m.left(), m.top(), m.right(), m.bottom())

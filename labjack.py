@@ -3,9 +3,7 @@ import weakref
 
 # third party imports
 import u3
-from LabJackPython import NullHandleException
-from LabJackPython import deviceCount
-from LabJackPython import listAll, isHandleValid
+from LabJackPython import deviceCount, listAll, isHandleValid, NullHandleException
 
 # The LabJack vendor ID is 0x0CD5. The product ID for the U3 is 0x0003.
 VENDOR_ID = 0x0CD5
@@ -38,10 +36,10 @@ class MyU3(u3.U3):
     instances = []
     verbose = True
 
-    def __init__(self):
+    def __init__(self, *args, **kwargs):
         self.check_connected()
 
-        u3.U3.__init__(self, autoOpen=False) # do that "manually"
+        u3.U3.__init__(self, False, False, **kwargs)
         self.instances.append(weakref.ref(self))
         self.open()
 
@@ -118,8 +116,8 @@ class MyU3(u3.U3):
 
     # -------------------- CONFIG COMMANDS --------------------
 
-    def get_io_types
-
+    def get_io_types(self):
+        pass
 
 
 

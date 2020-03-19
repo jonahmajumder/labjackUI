@@ -18,12 +18,13 @@ class LabjackIO(Base, Form):
     ONSS = 'color: rgb(0, 0, 0);'
     OFFSS = 'color: rgba(0, 0, 0, 63);'
 
-    typeChanged = QtCore.pyqtSignal(bool)
-    directionChanged = QtCore.pyqtSignal(bool)
-    outputStateChanged = QtCore.pyqtSignal(bool)
+    typeChanged = QtCore.pyqtSignal(int, bool)
+    directionChanged = QtCore.pyqtSignal(int, bool)
+    outputStateChanged = QtCore.pyqtSignal(int, bool)
 
     def __init__(self, *args, **kwargs):
         self.exclusiveType = kwargs.pop('exclusiveType', None)
+        self.ioNumber = kwargs.pop('ioNumber', None)
 
         super().__init__(*args, **kwargs)
         # self.groupButtons()
@@ -114,16 +115,16 @@ class LabjackIO(Base, Form):
     def doTypeChanged(self):
         i = self.buttonGroups['type'].checkedId()
         self.typeStack.setCurrentIndex(1-i)
-        self.typeChanged.emit(i == 1)
+        self.typeChanged.emit(self.ioNumber, i == 0)
 
     def doDirectionChanged(self):
         i = self.buttonGroups['direction'].checkedId()
         self.directionStack.setCurrentIndex(1-i)
-        self.directionChanged.emit(i == 1)
+        self.directionChanged.emit(self.ioNumber, i == 1)
 
     def doOutputStateChanged(self):
         newState = self.outputSwitch.isChecked()
-        self.directionChanged.emit(newState)
+        self.outputStateChanged.emit(self.ioNumber, newState)
         if newState:
             self.outputHighLabel.setStyleSheet(self.ONSS)
             self.outputLowLabel.setStyleSheet(self.OFFSS)

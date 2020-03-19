@@ -17,6 +17,7 @@ class ConnectPanel(Base, Form):
     deviceType = 3
 
     deviceOpened = QtCore.pyqtSignal(MyU3)
+    deviceDisconnected = QtCore.pyqtSignal()
 
     def __init__(self, *args, **kwargs):
 
@@ -66,6 +67,7 @@ class ConnectPanel(Base, Form):
         self.propertyViewer.clearContents()
         self.propertyViewer.setRowCount(0)
         MyU3.close_all()
+        self.deviceDisconnected.emit()
         for i in range(self.deviceComboBox.count(), 3, -1):
             self.deviceComboBox.removeItem(i)
 
@@ -85,12 +87,18 @@ class ConnectPanel(Base, Form):
         self.displayProperties()
 
     def displayProperties(self):
-        self.propertyViewer.setRowCount(len(self.myu3instance.properties))
-        for i, (key, val) in enumerate(self.myu3instance.properties.items()):
+        self.updatePropertyViewer()
+        self.deviceOpened.emit(self.myu3instance)
+
+    def updatePropertyViewer(self):
+        prop = self.myu3instance.configU3()
+        ioprops = self.myu3instance.configIO()
+        prop['FIOAnalog'] = ioprops['FIOAnalog']
+        prop['EIOAnalog'] = ioprops['EIOAnalog']
+        self.propertyViewer.setRowCount(len(prop))
+        for i, (key, val) in enumerate(prop.items()):
             self.propertyViewer.setItem(i, 0, QtWidgets.QTableWidgetItem(key))
             self.propertyViewer.setItem(i, 1, QtWidgets.QTableWidgetItem(str(val)))
-
-        self.deviceOpened.emit(self.myu3instance)
 
     def groupButtons(self, buttons, tag):
         if not hasattr(self, 'buttonGroups'):
